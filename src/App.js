@@ -1,22 +1,34 @@
 import React from "react";
-import { createGlobalStyle } from "styled-components";
 
-import AppBar from "./AppBar/AppBar";
+import AppBar from "./containers/AppBar/AppBar";
 import Header from "./components/Header/Header";
 import Works from "./components/Works/Works";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 
-import "./App.css";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { blue, white } from "@material-ui/core/colors/";
+
+const theme = createMuiTheme({
+  palette: {
+    text: {
+      primary: "#ffffff",
+      secondary: "#00000"
+    },
+    primary: blue
+  }
+});
 
 function App() {
   return (
     <React.Fragment>
-      <AppBar />
-      <Header />
-      <Works />
-      <Contact />
-      <Footer />
+      <MuiThemeProvider theme={theme}>
+        <AppBar />
+        <Header />
+        <Works />
+        <Contact />
+        <Footer />
+      </MuiThemeProvider>
     </React.Fragment>
   );
 }
