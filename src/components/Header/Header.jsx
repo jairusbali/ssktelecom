@@ -4,6 +4,8 @@ import React from "react";
 
 import Typography from "@material-ui/core/Typography";
 
+import { Element } from "react-scroll";
+
 const Header = styled.div`
   margin-top: 4rem;
   height: calc(100vh - 4rem);
@@ -19,10 +21,12 @@ const Header = styled.div`
 
 export default () => {
   return (
-    <Header id="#home">
-      <Typography variant="h4" gutterBottom color="textPrimary">
-        Cabling & Data Services
-      </Typography>
-    </Header>
+    <Element name="Home">
+      <Header>
+        <Typography variant="h4" gutterBottom color="textPrimary">
+          Cabling & Data Services
+        </Typography>
+      </Header>
+    </Element>
   );
 };

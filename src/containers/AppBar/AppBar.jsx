@@ -10,7 +10,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 
 import SideDrawer from "../../components/SideDrawer/SideDrawer";
 
-const styles = {
+const styles = themes => ({
   root: {
     flexGrow: 1
   },
@@ -21,7 +21,7 @@ const styles = {
     marginLeft: -12,
     marginRight: 20
   }
-};
+});
 
 function ButtonAppBar(props) {
   const { classes } = props;

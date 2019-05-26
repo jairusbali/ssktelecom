@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import React from "react";
 
+import { Element } from "react-scroll";
+
 const Contact = styled.div`
   height: 100vh;
   width: 100vw;
@@ -18,8 +20,10 @@ const Contact = styled.div`
 
 export default () => {
   return (
-    <Contact>
-      <h5>Contact form here support@ssktelecom.tech</h5>
-    </Contact>
+    <Element name="Contact">
+      <Contact>
+        <h5>Contact form here support@ssktelecom.tech</h5>
+      </Contact>
+    </Element>
   );
 };

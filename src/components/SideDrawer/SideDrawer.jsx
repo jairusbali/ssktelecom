@@ -10,15 +10,19 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import { Link } from "react-scroll";
 
-const styles = {
+const styles = theme => ({
   list: {
     width: 250
   },
   fullList: {
     width: "auto"
+  },
+  root: {
+    backgroundColor: theme.palette.primary
   }
-};
+});
 
 function TemporaryDrawer(props) {
   const { classes, show, setShow } = props;
@@ -28,7 +32,17 @@ function TemporaryDrawer(props) {
       <List>
         {["Home", "Projects", "Services", "Contact"].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemText primary={text} color="secondary" />
+            <Link
+              activeClass="active"
+              className="test1"
+              to={text}
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-64}
+            >
+              <ListItemText primary={text} color="secondary" />
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -44,7 +58,12 @@ function TemporaryDrawer(props) {
   }, []);
 
   return (
-    <Drawer anchor="right" open={show} onClose={() => setShow(false)}>
+    <Drawer
+      color="primary"
+      anchor="right"
+      open={show}
+      onClose={() => setShow(false)}
+    >
       <div
         tabIndex={0}
         role="button"

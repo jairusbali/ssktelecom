@@ -12,12 +12,14 @@ import Grid from "@material-ui/core/Grid";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 // import tileData from "./tileData";
 
+import { Element } from "react-scroll";
+
 const styles = theme => ({
   root: {
     margin: "1rem auto",
     width: "100%",
     height: "auto",
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.primary
   },
   gridList: {
     width: 500,
@@ -44,7 +46,7 @@ const getGridListCols = width => {
   }
 
   if (isWidthUp("md", width)) {
-    return 1;
+    return 2;
   }
   if (isWidthUp("sm", width)) {
     return 1;
@@ -87,43 +89,36 @@ function TitlebarGridList(props) {
   const { classes } = props;
 
   return (
-    <Grid container justify="center" className={classes.root}>
-      <Grid item xs={12}>
-        {/* </Grid>className={classes.root}> */}
-        {/* <Grid item xs> */}
-        <GridList
-          spacing={GRID_LIST_TILE_SPACING}
-          cellHeight={CELL_HEIGHT}
-          cols={getGridListCols(props.width)}
-        >
-          {/* <GridListTile
-          key="Subheader"
-          cols={getGridListCols(props.width)}
-          style={{ height: "auto" }}
-        >
-          <ListSubheader component="div">GRIDLIST SUBHEADER</ListSubheader>
-        </GridListTile> */}
-          {Object.keys(projectsInfo).map(tile => (
-            <GridListTile
-              key={projectsInfo[tile]}
-              cols={1}
-              className={classes.gridListTile}
-            >
-              <img src={projectsInfo[tile]} alt={tile} />
-              <GridListTileBar
-                title={tile.toUpperCase()}
-                subtitle={<span>subtitle {tile}</span>}
-                // actionIcon={
-                //   <IconButton className={classes.icon}>
-                //     <InfoIcon />
-                //   </IconButton>
-                // }
-              />
-            </GridListTile>
-          ))}
-        </GridList>
+    <Element name="Projects">
+      <Grid container justify="center" className={classes.root}>
+        <Grid item xs={12}>
+          <GridList
+            spacing={GRID_LIST_TILE_SPACING}
+            cellHeight={CELL_HEIGHT}
+            cols={getGridListCols(props.width)}
+          >
+            {Object.keys(projectsInfo).map(tile => (
+              <GridListTile
+                key={projectsInfo[tile]}
+                cols={1}
+                className={classes.gridListTile}
+              >
+                <img src={projectsInfo[tile]} alt={tile} />
+                <GridListTileBar
+                  title={tile.toUpperCase()}
+                  subtitle={<span>subtitle {tile}</span>}
+                  // actionIcon={
+                  //   <IconButton className={classes.icon}>
+                  //     <InfoIcon />
+                  //   </IconButton>
+                  // }
+                />
+              </GridListTile>
+            ))}
+          </GridList>
+        </Grid>
       </Grid>
-    </Grid>
+    </Element>
   );
 }
 
